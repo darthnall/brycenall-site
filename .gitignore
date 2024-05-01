@@ -6,3 +6,5 @@ package-lock.json
 
 credentials.*
 token.*
+
+__pycache__/

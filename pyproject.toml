@@ -1,0 +1,18 @@
+[project]
+name = "brycenall-site"
+version = "0.0.1"
+authors = [
+    { name="Blake Nall", email="dev@darthnall.com" },
+]
+description = "Brycenall Website"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/darthnall/brycenall-site"
