@@ -1,8 +1,13 @@
 from django.shortcuts import render
 
+from home.models import Video
+
 
 def home(request):
-    context = {"title": "Home"}
+    context = {
+        "title": "Home",
+        "video_background": Video.objects.get(title="Hotpocket Crime"),
+    }
     return render(request, "home/home.html", context=context)
 
 
@@ -19,7 +24,3 @@ def contact(request):
 def gallery(request):
     context = {"title": "Gallery"}
     return render(request, "home/gallery.html", context=context)
-
-def detail(request, video_id):
-    context = { "title": video.title }
-    return render(request, "home/detail.html", context=context)
