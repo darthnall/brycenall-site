@@ -5,6 +5,7 @@ theme/
 
 node_modules/
 package-lock.json
+migrations/
 
 db.*
 
