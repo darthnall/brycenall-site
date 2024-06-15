@@ -10,16 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATICFILES_DIRS = [
-    BASE_DIR / "global_static",
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
+TAILWIND_APP_NAME = "theme"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -29,7 +30,6 @@ SECRET_KEY = "django-insecure-mmw28cl5jf5u62e+8=-7_3yn@d)7q$$3fv#(j)#lgbpyh53zj=
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 STORAGES = {
@@ -39,11 +39,12 @@ STORAGES = {
     "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
-    "video": {
+    "bucket": {
         "BACKEND": "storages.backends.s3.S3Storage",
         "OPTIONS": {
             "bucket_name": "brycenall-bucket",
-            "secret_key": os.environ.get("AWS_SECRET_ACCESS_KEY", None),
+            "access_key": os.environ.get("AWS_S3_ACCESS_KEY_ID", ""),
+            "secret_key": os.environ.get("AWS_S3_SECRET_ACCESS_KEY", ""),
             "location": "media/",
             "verify": False,
         },
@@ -53,13 +54,16 @@ STORAGES = {
 # Application definition
 
 INSTALLED_APPS = [
-    "home.apps.HomeConfig",
+    "minitube.apps.MinitubeConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "tailwind",
+    "theme",
+    "django_browser_reload",
 ]
 
 MIDDLEWARE = [
@@ -70,6 +74,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "brycenall.urls"
@@ -136,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "US/Central"
+TIME_ZONE = "America/Chicago"
 
 USE_I18N = True
 
