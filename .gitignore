@@ -1,13 +1,13 @@
 .*
 !.gitignore
 
-theme/
 
 node_modules/
 package-lock.json
 migrations/
 
 db.*
+theme/static_src/
 
 credentials.*
 token.*
