@@ -6,8 +6,6 @@ node_modules/
 package-lock.json
 migrations/
 
-theme/static_src/
-theme/static/
 
 credentials.*
 token.*

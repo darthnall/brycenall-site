@@ -1,0 +1,10 @@
+{% extends "minitube/layout.html" %}
+{% block content %}
+<div class="text3xl">
+    <form id="search_form" action="search/" method="post">
+        <label for="search_label">Search</label>
+        <input type="text" name="search_input" value="">
+    </form>
+    <button hx-post="search/" hx-target="search_form">Search</button>
+</div>
+{% endblock content %}

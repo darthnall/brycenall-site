@@ -1,11 +1,13 @@
 {% extends "minitube/layout.html" %}
 {% block content %}
 <div class="mb-4 mx-2">
+    {% for media in medias %}
     <div class="text-3xl">{{ media.title }}</div>
     <video class="w-full" autoplay controls>
           <source src="{{ media.url }}" type="video/mp4">
           Your browser does not support the video tag.
     </video>
     <div class="text-xl">{{ media.desc }}</div>
+    {% endfor %}
 </div>
 {% endblock content %}
