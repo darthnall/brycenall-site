@@ -24,6 +24,6 @@ def gallery(request: HttpRequest) -> HttpResponse:
 def home(request: HttpRequest) -> HttpResponse:
     context = {
         "title": "Home",
-        "medias": Media.objects.first()[3:],
+        "medias": Media.objects.all(),
     }
     return render(request, "minitube/home.html", context=context)
